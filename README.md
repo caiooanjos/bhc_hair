@@ -106,4 +106,4 @@ index.html  →  quis.html (Quiz)  →  quismaispv.html (VSL + Ofertas)
 
 ---
 
-*Desenvolvido com 💗 para o BHC Hair Caps — © 2026*
+*Desenvolvido com 💗 inspirado no BHC Hair Caps — © 2026*
