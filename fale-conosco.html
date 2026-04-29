@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ponto 6: Proteção contra Clickjacking -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self'">
+    <title>Fale Conosco — BHC Hair</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Ponto 10: Cor padronizada para #db2777 -->
+    <script>tailwind.config={theme:{extend:{colors:{brand:{50:'#fdf2f8',100:'#fce7f3',500:'#ec4899',600:'#db2777',700:'#be185d'}}}}}</script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Ponto 8: CSS compartilhado externo -->
+    <link rel="stylesheet" href="css/bhc-custom.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <header class="bg-brand-600 py-5 px-4">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="quismaispv.html"><img src="assets/logo.png" alt="BHC Hair" class="h-10 w-auto brightness-0 invert"></a>
+            <a href="quismaispv.html" class="flex items-center gap-1.5 text-white/80 hover:text-white text-sm"><i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar</a>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-16">
+
+        <div class="text-center mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Fale Conosco</h1>
+            <p class="text-gray-500 text-lg">Estamos aqui para ajudar você. Escolha o canal mais conveniente.</p>
+        </div>
+
+        <!-- Canais de contato -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <!-- Ponto 7: rel="noopener noreferrer" no link externo do WhatsApp -->
+            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="bg-white rounded-3xl p-7 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col items-center text-center group">
+                <div class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-green-100 transition-colors">
+                    <i data-lucide="message-circle" class="w-7 h-7 text-green-600"></i>
+                </div>
+                <h2 class="font-bold text-gray-900 mb-1">WhatsApp</h2>
+                <p class="text-sm text-gray-500">Atendimento rápido<br>via mensagem</p>
+                <span class="mt-4 inline-block bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">Falar agora</span>
+            </a>
+            <a href="mailto:contato@bhchair.com.br" class="bg-white rounded-3xl p-7 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col items-center text-center group">
+                <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-brand-100 transition-colors">
+                    <i data-lucide="mail" class="w-7 h-7 text-brand-600"></i>
+                </div>
+                <h2 class="font-bold text-gray-900 mb-1">E-mail</h2>
+                <p class="text-sm text-gray-500">Resposta em até<br>24 horas úteis</p>
+                <span class="mt-4 inline-block bg-brand-600 text-white text-xs font-bold px-4 py-1.5 rounded-full">Enviar e-mail</span>
+            </a>
+            <div class="bg-white rounded-3xl p-7 border border-gray-100 shadow-sm flex flex-col items-center text-center">
+                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-4">
+                    <i data-lucide="clock" class="w-7 h-7 text-blue-600"></i>
+                </div>
+                <h2 class="font-bold text-gray-900 mb-1">Horário de Atendimento</h2>
+                <p class="text-sm text-gray-500">Segunda a Sexta<br><strong class="text-gray-700">9h às 18h</strong></p>
+                <p class="text-sm text-gray-500 mt-2">Sábados<br><strong class="text-gray-700">9h às 13h</strong></p>
+            </div>
+        </div>
+
+        <!-- Formulário -->
+        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-8 md:p-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Envie sua mensagem</h2>
+            <p class="text-gray-500 mb-8">Preencha o formulário abaixo e retornaremos em até 24 horas úteis.</p>
+
+            <form id="contact-form" class="space-y-5" onsubmit="handleSubmit(event)">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="nome">Nome completo *</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Seu nome"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required placeholder="seu@email.com"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="telefone">WhatsApp / Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="assunto">Assunto *</label>
+                        <select id="assunto" name="assunto" required
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all bg-white">
+                            <option value="">Selecione...</option>
+                            <option value="rastreamento">Rastreamento de Pedido</option>
+                            <option value="troca">Troca / Devolução</option>
+                            <option value="garantia">Garantia / Reembolso</option>
+                            <option value="duvida-produto">Dúvida sobre o Produto</option>
+                            <option value="pagamento">Problema com Pagamento</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="pedido">Número do Pedido (se aplicável)</label>
+                    <input type="text" id="pedido" name="pedido" placeholder="Ex: BHC-2026-XXXXX"
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1.5" for="mensagem">Mensagem *</label>
+                    <textarea id="mensagem" name="mensagem" required rows="5" placeholder="Descreva sua dúvida ou solicitação com o máximo de detalhes possível..."
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all resize-none"></textarea>
+                </div>
+                <button type="submit"
+                    class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5 shadow-lg shadow-brand-600/25">
+                    <i data-lucide="send" class="w-5 h-5"></i>
+                    Enviar Mensagem
+                </button>
+            </form>
+
+            <!-- Sucesso -->
+            <div id="success-msg" class="hidden text-center py-10">
+                <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="check-circle" class="w-8 h-8 text-green-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Mensagem enviada!</h3>
+                <p class="text-gray-500">Recebemos sua mensagem e retornaremos em até 24 horas úteis.</p>
+                <a href="quismaispv.html" class="inline-block mt-6 bg-brand-600 text-white font-bold px-8 py-3 rounded-full text-sm hover:bg-brand-700 transition-colors">Voltar ao site</a>
+            </div>
+
+        </div>
+
+        <!-- FAQ rápido -->
+        <div class="mt-12">
+            <h2 class="text-xl font-bold text-gray-900 mb-6 text-center">Perguntas Frequentes no Atendimento</h2>
+            <div class="space-y-3">
+                <details class="bg-white rounded-2xl border border-gray-100 shadow-sm group">
+                    <summary class="px-6 py-4 font-semibold text-gray-800 cursor-pointer flex items-center justify-between list-none">
+                        Qual o prazo para receber meu pedido?
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <p class="px-6 pb-4 text-sm text-gray-600">Após a confirmação do pagamento, o pedido é postado em até 2 dias úteis. O prazo de entrega pelos Correios é de 3 a 10 dias úteis, variando conforme sua região.</p>
+                </details>
+                <details class="bg-white rounded-2xl border border-gray-100 shadow-sm group">
+                    <summary class="px-6 py-4 font-semibold text-gray-800 cursor-pointer flex items-center justify-between list-none">
+                        Como funciona a garantia de 30 dias?
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <p class="px-6 pb-4 text-sm text-gray-600">Se em 30 dias após o recebimento você não estiver satisfeito com os resultados, basta entrar em contato pelo WhatsApp ou e-mail. Faremos o reembolso integral sem burocracia.</p>
+                </details>
+                <details class="bg-white rounded-2xl border border-gray-100 shadow-sm group">
+                    <summary class="px-6 py-4 font-semibold text-gray-800 cursor-pointer flex items-center justify-between list-none">
+                        Posso comprar em marketplaces como Shopee ou Mercado Livre?
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <p class="px-6 pb-4 text-sm text-gray-600">Não. O BHC Hair® é vendido exclusivamente pelo site oficial. Produtos adquiridos em outros canais podem ser falsificações e não possuem garantia.</p>
+                </details>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-brand-600 py-6 text-center mt-16"><p class="text-white/60 text-xs">© 2026 BHC Hair Caps. Todos os direitos reservados.</p></footer>
+
+    <script>
+        lucide.createIcons();
+        function handleSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contact-form').classList.add('hidden');
+            document.getElementById('success-msg').classList.remove('hidden');
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ponto 6: Proteção contra Clickjacking -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self'">
+    <title>Políticas de Envio — BHC Hair</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Ponto 10: Cor padronizada para #db2777 -->
+    <script>tailwind.config={theme:{extend:{colors:{brand:{50:'#fdf2f8',100:'#fce7f3',500:'#ec4899',600:'#db2777',700:'#be185d'}}}}}</script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Ponto 8: CSS compartilhado externo -->
+    <link rel="stylesheet" href="css/bhc-custom.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <header class="bg-brand-600 py-5 px-4">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="quismaispv.html"><img src="assets/logo.png" alt="BHC Hair" class="h-10 w-auto brightness-0 invert"></a>
+            <a href="quismaispv.html" class="flex items-center gap-1.5 text-white/80 hover:text-white text-sm"><i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar</a>
+        </div>
+    </header>
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-8 md:p-12">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-12 h-12 bg-brand-50 rounded-2xl flex items-center justify-center">
+                    <i data-lucide="package" class="w-6 h-6 text-brand-600"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500 font-medium">BHC Hair®</p>
+                    <h1 class="text-2xl md:text-3xl font-bold text-gray-900">Políticas de Envio</h1>
+                </div>
+            </div>
+            <p class="text-sm text-gray-400 mb-10">Última atualização: abril de 2026</p>
+
+            <!-- Cards informativos -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+                <div class="bg-gray-50 rounded-2xl p-5 text-center border border-gray-100">
+                    <i data-lucide="truck" class="w-8 h-8 text-brand-600 mx-auto mb-2"></i>
+                    <p class="font-bold text-gray-900 text-sm">Correios</p>
+                    <p class="text-xs text-gray-500 mt-1">SEDEX · PAC</p>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-5 text-center border border-gray-100">
+                    <i data-lucide="clock" class="w-8 h-8 text-brand-600 mx-auto mb-2"></i>
+                    <p class="font-bold text-gray-900 text-sm">3 a 10 dias úteis</p>
+                    <p class="text-xs text-gray-500 mt-1">conforme a região</p>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-5 text-center border border-gray-100">
+                    <i data-lucide="map-pin" class="w-8 h-8 text-brand-600 mx-auto mb-2"></i>
+                    <p class="font-bold text-gray-900 text-sm">Rastreamento</p>
+                    <p class="text-xs text-gray-500 mt-1">por e-mail e WhatsApp</p>
+                </div>
+            </div>
+
+            <div class="space-y-8 text-gray-600 leading-relaxed">
+                <section>
+                    <h2 class="text-lg font-bold text-gray-900 mb-3">1. Processamento do Pedido</h2>
+                    <p>Após a confirmação do pagamento, seu pedido é processado em até <strong>2 dias úteis</strong>. Pedidos realizados após as 18h ou em fins de semana e feriados são processados no próximo dia útil. Você receberá um e-mail de confirmação assim que o pedido for despachado.</p>
+                </section>
+                <section>
+                    <h2 class="text-lg font-bold text-gray-900 mb-3">2. Modalidades de Entrega</h2>
+                    <p>As entregas são realizadas exclusivamente pelos <strong>Correios</strong>, nas modalidades:</p>
+                    <ul class="list-disc list-inside mt-3 space-y-2 ml-2">
+                        <li><strong>SEDEX:</strong> entrega expressa, ideal para regiões metropolitanas. Prazo estimado: 1 a 5 dias úteis.</li>
+                        <li><strong>PAC:</strong> entrega econômica para todo o Brasil. Prazo estimado: 3 a 10 dias úteis.</li>
+                    </ul>
+                    <p class="mt-3">O prazo de entrega começa a contar a partir da data de postagem, não da data do pedido.</p>
+                </section>
+                <section>
+                    <h2 class="text-lg font-bold text-gray-900 mb-3">3. Rastreamento</h2>
+                    <p>Após o despacho, você receberá o <strong>código de rastreio</strong> por e-mail e WhatsApp. O rastreamento pode ser feito diretamente no site dos Correios (<a href="https://www.correios.com.br" target="_blank" rel="noopener noreferrer" class="text-brand-600 font-semibold hover:underline">correios.com.br</a>) informando o código recebido.</p>
+                </section>
+                <section>
+                    <h2 class="text-lg font-bold text-gray-900 mb-3">4. Cobertura Geográfica</h2>
+                    <p>Realizamos entregas para todo o território nacional. Para regiões de difícil acesso (zonas rurais, ilhas, comunidades remotas), o prazo pode ser superior ao estimado, conforme as regras dos Correios.</p>
+                </section>
+                <section>
+                    <h2 class="text-lg font-bold text-gray-900 mb-3">5. Embalagem e Sigilo</h2>
+                    <p>Seu pedido é enviado em embalagem <strong>neutra e discreta</strong>, sem identificação externa do produto. O remetente constará apenas como o nome comercial da empresa, preservando sua privacidade.</p>
+                </section>
+                <section>
+                    <h2 class="text-lg font-bold text-gray-900 mb-3">6. Atrasos e Problemas na Entrega</h2>
+                    <p>Situações como greves dos Correios, desastres naturais, datas comemorativas de alto volume ou informações incorretas de endereço podem causar atrasos. Nesses casos, entre em contato com nosso <a href="fale-conosco.html" class="text-brand-600 font-semibold hover:underline">atendimento</a> para suporte.</p>
+                </section>
+                <section>
+                    <h2 class="text-lg font-bold text-gray-900 mb-3">7. Produto Extraviado ou Danificado</h2>
+                    <p>Se o produto chegar danificado ou não for entregue no prazo previsto, entre em contato conosco em até <strong>7 dias</strong> após o prazo limite de entrega. Faremos o reenvio ou reembolso conforme cada situação.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-brand-600 py-6 text-center"><p class="text-white/60 text-xs">© 2026 BHC Hair Caps. Todos os direitos reservados.</p></footer>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

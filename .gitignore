@@ -1,0 +1,21 @@
+# === BHC Hair — .gitignore ===
+
+# Pasta de assets temporários e de edição
+rodapé/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos de editor
+.vscode/
+*.code-workspace
+
+# Logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.bak
+*~

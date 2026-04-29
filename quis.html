@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ponto 6: Proteção contra Clickjacking -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self'">
+    <title>Análise de Perfil Capilar — BHC Hair®</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            500: '#ec4899',
+                            600: '#db2777', /* Ponto 10: Cor padronizada */
+                            900: '#831843',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Ponto 8: CSS compartilhado em arquivo externo -->
+    <link rel="stylesheet" href="css/bhc-custom.css">
+</head>
+<body class="bg-brand-50 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Container Principal -->
+    <div class="bg-white rounded-2xl shadow-xl max-w-lg w-full overflow-hidden relative border border-brand-100">
+        
+        <!-- Cabeçalho -->
+        <div class="bg-brand-600 text-white p-4 text-center">
+            <h1 class="text-xl font-bold flex items-center justify-center gap-2">
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                Análise de Perfil Capilar
+            </h1>
+        </div>
+
+        <!-- Ecrã 1: Início -->
+        <div id="screen-start" class="p-8 text-center fade-in">
+            <div class="w-20 h-20 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="microscope" class="w-10 h-10"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Descubra se o nosso Tratamento Avançado é para si</h2>
+            <p class="text-gray-600 mb-8">
+                A nossa fórmula é altamente concentrada e tem grande procura. Por isso, precisamos garantir que é direcionada apenas para pessoas que realmente precisam e estão comprometidas com os resultados.
+            </p>
+            <button onclick="startQuiz()" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg hover:shadow-brand-500/30 transform hover:-translate-y-1">
+                INICIAR AVALIAÇÃO AGORA
+            </button>
+            <p class="text-xs text-gray-400 mt-4 flex items-center justify-center gap-1">
+                <i data-lucide="lock" class="w-3 h-3"></i> As suas respostas são 100% confidenciais.
+            </p>
+        </div>
+
+        <!-- Ecrã 2: Quiz -->
+        <div id="screen-quiz" class="p-6 sm:p-8 hidden fade-in">
+            <!-- Barra de Progresso -->
+            <div class="w-full bg-gray-100 rounded-full h-2 mb-6">
+                <div id="progress-bar" class="bg-brand-500 h-2 rounded-full progress-bar-fill" style="width: 25%"></div>
+            </div>
+            
+            <span id="question-counter" class="text-sm font-semibold text-brand-600 mb-2 block">Pergunta 1 de 4</span>
+            <h2 id="question-text" class="text-xl font-bold text-gray-800 mb-6 leading-tight"></h2>
+            
+            <div id="options-container" class="space-y-3">
+                <!-- As opções serão injetadas aqui via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Ecrã 3: Captação de Dados (Leads) -->
+        <div id="screen-lead" class="p-8 fade-in hidden">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="user-check" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Quase lá!</h2>
+                <p class="text-gray-600 text-sm">Precisamos dos seus dados para finalizar a análise e reservar o seu possível kit de tratamento.</p>
+            </div>
+
+            <form id="lead-form" onsubmit="submitForm(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">O seu Primeiro Nome</label>
+                    <!-- Ponto 4: Limite de 50 chars para segurança -->
+                    <input type="text" id="lead-name" required maxlength="50" placeholder="Ex: Ana" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">E-mail</label>
+                    <input type="email" id="lead-email" required placeholder="ana@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">WhatsApp</label>
+                    <input type="tel" id="lead-phone" required placeholder="(11) 99999-9999" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all">
+                </div>
+                
+                <button type="submit" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg hover:shadow-brand-500/30 transform hover:-translate-y-1 mt-2">
+                    VER MEU RESULTADO
+                </button>
+            </form>
+            <p class="text-xs text-center text-gray-400 mt-4 flex items-center justify-center gap-1">
+                <i data-lucide="shield-check" class="w-3 h-3"></i> Dados 100% seguros e não fazemos spam.
+            </p>
+        </div>
+
+        <!-- Ecrã 4: A Analisar -->
+        <div id="screen-loading" class="p-12 text-center hidden fade-in">
+            <i data-lucide="loader-2" class="w-16 h-16 text-brand-600 mx-auto mb-4 animate-spin"></i>
+            <h2 class="text-xl font-bold text-gray-800 mb-2">A analisar o seu perfil...</h2>
+            <p class="text-gray-500" id="loading-text">A verificar compatibilidade com a fórmula...</p>
+        </div>
+
+        <!-- Ecrã 5: Resultado Aprovado -->
+        <div id="screen-approved" class="p-8 text-center hidden fade-in">
+            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="check-circle-2" class="w-12 h-12"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Perfil Aprovado! 🎉</h2>
+            <p class="text-gray-600 mb-6 text-sm">
+                Com base nas suas respostas, identificamos que a queda e a lentidão no crescimento do seu cabelo têm forte relação com a falta de nutrientes específicos no seu organismo. 
+                <br><br>
+                O <strong class="text-brand-600">BHC Hair Caps</strong> foi desenvolvido exatamente para o seu caso.
+            </p>
+            
+            <div class="bg-yellow-50 border border-yellow-200 text-yellow-800 p-4 rounded-lg mb-6 text-xs text-left flex gap-3">
+                <i data-lucide="alert-triangle" class="w-5 h-5 flex-shrink-0 mt-0.5"></i>
+                <p><strong>Atenção:</strong> Como o seu perfil foi altamente compatível, liberamos um lote promocional exclusivo para si. Esta oferta expira ao fechar a página.</p>
+            </div>
+
+            <!-- Este botão irá redirecionar para a Landing Page passando o nome! -->
+            <button onclick="goToLandingPage()" class="block w-full bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg hover:shadow-green-500/30 transform hover:-translate-y-1 text-center">
+                LIBERAR O MEU TRATAMENTO AGORA
+            </button>
+        </div>
+
+        <!-- Ecrã 6: Resultado Reprovado -->
+        <div id="screen-rejected" class="p-8 text-center hidden fade-in">
+            <div class="w-20 h-20 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="x-circle" class="w-12 h-12"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Perfil Incompatível</h2>
+            <p class="text-gray-600 mb-6 text-sm">
+                Agradecemos a sua sinceridade. O nosso tratamento capilar é focado em resultados reais a médio/longo prazo através de suplementação diária. 
+                <br><br>
+                Pelos seus objetivos e respostas, acreditamos que o nosso produto não é a melhor solução para o que procura de momento.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Ponto 9: JavaScript em arquivo externo (js/quis.js) -->
+    <script src="js/quis.js"></script>
+</body>
+</html>
