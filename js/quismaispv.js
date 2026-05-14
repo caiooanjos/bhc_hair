@@ -99,4 +99,23 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // ─── Rastreamento de clique nos botões de Checkout ───────────────────────
+    // Exposta globalmente para ser chamada por onclick nos botões HTML
+    window.trackCheckout = function (kit, preco, checkout_url) {
+        if (window.BDFTracker) {
+            window.BDFTracker.trackEvent('checkout_clicked', {
+                kit,
+                preco,
+                checkout_url,
+                origem: 'pagina_vendas_bhc',
+                brand: 'Bela de Fases',
+                product_interest: 'BHC Hair'
+            });
+        }
+        // Pequeno delay para garantir que o fetch (keepalive) seja disparado
+        setTimeout(function () {
+            window.location.href = checkout_url;
+        }, 120);
+    };
 });

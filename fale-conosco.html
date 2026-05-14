@@ -33,7 +33,7 @@
         <!-- Canais de contato -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <!-- Ponto 7: rel="noopener noreferrer" no link externo do WhatsApp -->
-            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="bg-white rounded-3xl p-7 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col items-center text-center group">
+            <a href="https://wa.me/5542988293278?text=Oi!%20Vim%20pelo%20site%20Bela%20de%20Fases%20e%20quero%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener noreferrer" class="bg-white rounded-3xl p-7 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col items-center text-center group">
                 <div class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-green-100 transition-colors">
                     <i data-lucide="message-circle" class="w-7 h-7 text-green-600"></i>
                 </div>
@@ -41,7 +41,7 @@
                 <p class="text-sm text-gray-500">Atendimento rápido<br>via mensagem</p>
                 <span class="mt-4 inline-block bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">Falar agora</span>
             </a>
-            <a href="mailto:contato@bhchair.com.br" class="bg-white rounded-3xl p-7 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col items-center text-center group">
+            <a href="mailto:falarcom@beladefases.com.br" class="bg-white rounded-3xl p-7 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col items-center text-center group">
                 <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-brand-100 transition-colors">
                     <i data-lucide="mail" class="w-7 h-7 text-brand-600"></i>
                 </div>
@@ -119,8 +119,8 @@
                 <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i data-lucide="check-circle" class="w-8 h-8 text-green-500"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Mensagem enviada!</h3>
-                <p class="text-gray-500">Recebemos sua mensagem e retornaremos em até 24 horas úteis.</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Mensagem enviada! ✅</h3>
+                <p class="text-gray-500">Recebemos sua mensagem! Nossa equipe vai analisar e responder em breve.</p>
                 <a href="quismaispv.html" class="inline-block mt-6 bg-brand-600 text-white font-bold px-8 py-3 rounded-full text-sm hover:bg-brand-700 transition-colors">Voltar ao site</a>
             </div>
 
@@ -158,10 +158,32 @@
 
     <footer class="bg-brand-600 py-6 text-center mt-16"><p class="text-white/60 text-xs">© 2026 BHC Hair Caps. Todos os direitos reservados.</p></footer>
 
+    <script src="js/tracker.js"></script>
     <script>
         lucide.createIcons();
         function handleSubmit(e) {
             e.preventDefault();
+            const nome     = document.getElementById('nome').value.trim().slice(0, 80);
+            const email    = document.getElementById('email').value.trim().toLowerCase();
+            const telefone = document.getElementById('telefone').value.trim();
+            const assunto  = document.getElementById('assunto').value;
+            const numero_pedido = document.getElementById('pedido').value.trim();
+            const mensagem = document.getElementById('mensagem').value.trim().slice(0, 1000);
+
+            if (window.BDFTracker) {
+                window.BDFTracker.trackEvent('contact_form_submitted', {
+                    nome,
+                    email,
+                    telefone,
+                    assunto,
+                    numero_pedido,
+                    mensagem,
+                    origem: 'fale_conosco_bela_de_fases',
+                    brand: 'Bela de Fases',
+                    product_interest: 'BHC Hair'
+                });
+            }
+
             document.getElementById('contact-form').classList.add('hidden');
             document.getElementById('success-msg').classList.remove('hidden');
             lucide.createIcons();

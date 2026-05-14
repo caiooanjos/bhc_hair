@@ -1,6 +1,10 @@
 (function () {
     const API_ENDPOINT = 'https://bhc-lead-api.caiogpuava.workers.dev';
 
+    // ─── Contatos oficiais — altere aqui para atualizar todo o projeto ────────
+    const WHATSAPP_NUMBER = '5542988293278';
+    const CONTACT_EMAIL   = 'falarcom@beladefases.com.br';
+
     function getLeadId() {
         let leadId = localStorage.getItem('bdf_lead_id');
 
@@ -52,5 +56,7 @@
     window.BDFTracker = {
         trackEvent,
         getLeadId,
+        WHATSAPP_NUMBER,
+        CONTACT_EMAIL,
     };
 })();
