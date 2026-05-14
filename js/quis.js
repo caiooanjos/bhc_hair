@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let score = 0;
     let disqualified = false;
     let userName = '';
+    let answers = [];
 
     // ─── Perguntas e Opções ──────────────────────────────────────────────────
     const questions = [
@@ -51,20 +52,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ─── Referências de UI ───────────────────────────────────────────────────
     const screens = {
-        start:    document.getElementById('screen-start'),
-        quiz:     document.getElementById('screen-quiz'),
-        lead:     document.getElementById('screen-lead'),
-        loading:  document.getElementById('screen-loading'),
+        start: document.getElementById('screen-start'),
+        quiz: document.getElementById('screen-quiz'),
+        lead: document.getElementById('screen-lead'),
+        loading: document.getElementById('screen-loading'),
         approved: document.getElementById('screen-approved'),
         rejected: document.getElementById('screen-rejected')
     };
 
     const ui = {
-        questionText:     document.getElementById('question-text'),
+        questionText: document.getElementById('question-text'),
         optionsContainer: document.getElementById('options-container'),
-        questionCounter:  document.getElementById('question-counter'),
-        progressBar:      document.getElementById('progress-bar'),
-        loadingText:      document.getElementById('loading-text')
+        questionCounter: document.getElementById('question-counter'),
+        progressBar: document.getElementById('progress-bar'),
+        loadingText: document.getElementById('loading-text')
     };
 
     // ─── Funções de Navegação ────────────────────────────────────────────────
@@ -77,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
         currentQuestion = 0;
         score = 0;
         disqualified = false;
+        answers = [];
         screens.quiz.classList.remove('hidden');
         loadQuestion();
     }
@@ -106,6 +108,13 @@ document.addEventListener('DOMContentLoaded', function () {
         score += option.points;
         if (option.disqualify) disqualified = true;
 
+        answers.push({
+            question: questions[currentQuestion].question,
+            answer: option.text,
+            points: option.points || 0,
+            disqualify: Boolean(option.disqualify)
+        });
+
         currentQuestion++;
         if (currentQuestion < questions.length) {
             loadQuestion();
@@ -122,11 +131,27 @@ document.addEventListener('DOMContentLoaded', function () {
     function submitForm(event) {
         event.preventDefault();
 
-        // Coleta e sanitiza o nome (máximo 50 caracteres)
-        userName = document.getElementById('lead-name').value.trim().slice(0, 50);
-        // email e phone coletados — conecte a um serviço (ex: Formspree, ActiveCampaign)
-        // const email = document.getElementById('lead-email').value;
-        // const phone = document.getElementById('lead-phone').value;
+        const name = document.getElementById('lead-name').value.trim().slice(0, 50);
+        const email = document.getElementById('lead-email').value.trim().toLowerCase();
+        const phone = document.getElementById('lead-phone').value.trim();
+
+        userName = name;
+
+        const qualified = !disqualified && score >= 5;
+
+        if (window.BDFTracker) {
+            window.BDFTracker.trackEvent('quiz_completed', {
+                name,
+                email,
+                phone,
+                score,
+                qualified,
+                answers,
+                origem: 'quiz_capilar_bela_de_fases',
+                product_interest: 'BHC Hair',
+                brand: 'Bela de Fases'
+            });
+        }
 
         processResult();
     }
@@ -150,7 +175,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function goToLandingPage() {
         const landingPageUrl = 'quismaispv.html';
-        const finalUrl = landingPageUrl + '?nome=' + encodeURIComponent(userName);
+        const leadId = window.BDFTracker ? window.BDFTracker.getLeadId() : '';
+
+        const finalUrl =
+            landingPageUrl +
+            '?nome=' + encodeURIComponent(userName) +
+            '&lead_id=' + encodeURIComponent(leadId);
+
         try {
             window.location.href = finalUrl;
         } catch (error) {
@@ -159,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ─── Expõe funções globalmente (chamadas por onclick no HTML) ────────────
-    window.startQuiz    = startQuiz;
-    window.submitForm   = submitForm;
+    window.startQuiz = startQuiz;
+    window.submitForm = submitForm;
     window.goToLandingPage = goToLandingPage;
 });
