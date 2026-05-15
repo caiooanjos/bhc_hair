@@ -75,6 +75,31 @@ document.addEventListener('DOMContentLoaded', function () {
         window.history.pushState(null, null, window.location.href); // Bloqueia saída
     });
 
+    // Gatilho Mobile: Scroll Rápido para Cima (Intent de sair)
+    let lastScrollY = window.scrollY;
+    let lastScrollTime = Date.now();
+    
+    window.addEventListener('scroll', function () {
+        if (exitModalTriggered) return;
+        
+        const currentScrollY = window.scrollY;
+        const currentTime = Date.now();
+        
+        // Verifica se scrollou para cima e não está no topo
+        if (currentScrollY < lastScrollY && currentScrollY > 300) {
+            const distance = lastScrollY - currentScrollY;
+            const timeDiff = currentTime - lastScrollTime;
+            
+            // Velocidade em px por milissegundo (> 2.0 é um flick rápido no mobile)
+            if (timeDiff > 0 && (distance / timeDiff) > 2.5) {
+                showExitModal();
+            }
+        }
+        
+        lastScrollY = currentScrollY;
+        lastScrollTime = currentTime;
+    }, { passive: true });
+
     if (closeModalBtn) closeModalBtn.addEventListener('click', hideExitModal);
 
     // Fecha clicando no fundo escuro fora do modal
@@ -99,6 +124,46 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // ─── Prova Social (Toast Dinâmico) ────────────────────────────────────────
+    const socialToast = document.getElementById('social-proof-toast');
+    if (socialToast) {
+        const nomes = ['Maria (SP)', 'Ana (RJ)', 'Juliana (MG)', 'Camila (PR)', 'Fernanda (SC)', 'Letícia (RS)', 'Amanda (GO)', 'Beatriz (DF)', 'Clara (BA)', 'Patrícia (ES)'];
+        const produtos = ['Kit 3 Frascos', 'Kit 5 Frascos', '1 Frasco', 'Kit 5 Frascos', 'Kit 3 Frascos'];
+        const tempos = ['Há 1 minuto', 'Há 2 minutos', 'Há 5 minutos', 'Agora mesmo', 'Há 3 minutos'];
+
+        const elName = document.getElementById('sp-name');
+        const elProduct = document.getElementById('sp-product');
+        const elTime = document.getElementById('sp-time');
+
+        function showSocialProof() {
+            if (!socialToast || exitModalTriggered) return;
+            
+            // Escolhe dados aleatórios
+            elName.innerText = nomes[Math.floor(Math.random() * nomes.length)];
+            elProduct.innerText = produtos[Math.floor(Math.random() * produtos.length)];
+            elTime.innerText = tempos[Math.floor(Math.random() * tempos.length)];
+
+            // Anima entrada
+            socialToast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            
+            // Anima saída após 4 segundos
+            setTimeout(() => {
+                socialToast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }, 4500);
+        }
+
+        // Mostra o primeiro após 10 segundos
+        setTimeout(() => {
+            showSocialProof();
+            // E depois repete com intervalos aleatórios entre 15 e 30 segundos
+            setInterval(() => {
+                if(Math.random() > 0.3 && !exitModalTriggered) { // 70% de chance de mostrar para parecer orgânico
+                    showSocialProof();
+                }
+            }, Math.floor(Math.random() * 15000) + 15000);
+        }, 10000);
+    }
 
     // ─── Rastreamento de clique nos botões de Checkout ───────────────────────
     // Exposta globalmente para ser chamada por onclick nos botões HTML

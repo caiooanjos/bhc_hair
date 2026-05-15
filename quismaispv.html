@@ -58,24 +58,46 @@
         </div>
     </nav>
 
+    <!-- Barra CTA Fixa Mobile (só aparece em telas pequenas) -->
+    <div id="mobile-cta-bar"
+        class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/80 backdrop-blur-xl border-t border-brand-100 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] px-4 py-3 pb-safe transition-transform duration-300 transform translate-y-0">
+        <a href="#ofertas"
+            class="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold text-base py-3.5 rounded-2xl shadow-[0_8px_20px_rgba(34,197,94,0.3)] active:scale-95 transition-all">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i> Quero Restaurar o Meu Cabelo
+        </a>
+    </div>
+
+    <!-- Toast de Prova Social (Aparece no canto inferior esquerdo/acima da barra mobile) -->
+    <div id="social-proof-toast" class="fixed bottom-24 md:bottom-6 left-4 right-4 md:right-auto md:left-6 z-50 bg-white border border-gray-100 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-3 flex items-center gap-3 transform translate-y-10 opacity-0 pointer-events-none transition-all duration-500 max-w-sm">
+        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <i data-lucide="shopping-bag" class="w-5 h-5 text-green-600"></i>
+        </div>
+        <div>
+            <p class="text-sm text-gray-800 font-medium leading-tight"><span id="sp-name" class="font-bold">Maria (SP)</span> acabou de comprar</p>
+            <p class="text-xs text-brand-600 font-bold" id="sp-product">Kit 3 Frascos</p>
+            <p class="text-[10px] text-gray-400 mt-0.5" id="sp-time">Há 2 minutos</p>
+        </div>
+    </div>
+
     <!-- Secção Hero (Início) -->
-    <section class="pt-16 sm:pt-20 pb-20 px-4 sm:px-6 max-w-6xl mx-auto flex flex-col items-center text-center">
-        <!-- Ajuste de espaçamento topo: pt-16 reduz a folga; aumente para pt-20/pt-24 conforme preferir -->
+    <section
+        class="pt-24 sm:pt-28 pb-12 md:pb-20 px-4 sm:px-6 max-w-6xl mx-auto flex flex-col items-center text-center relative">
         <!-- Badge de Continuidade do Quiz (O nome será inserido aqui via JS) -->
         <div
-            class="inline-flex items-center gap-1 px-4 py-1 rounded-full bg-green-50 border border-green-100 text-green-700 font-medium text-sm mb-8 fade-in-up">
-            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
-            Identificamos o seu perfil! <span id="display-nome-badge">O BHC Hair é para você.</span>
+            class="inline-flex flex-col sm:flex-row items-center justify-center text-center gap-1 px-4 py-2 rounded-2xl sm:rounded-full bg-green-50/80 backdrop-blur-sm border border-green-200 text-green-700 font-semibold text-xs sm:text-sm mb-6 md:mb-8 shadow-sm fade-in-up">
+            <span class="flex items-center gap-1"><i data-lucide="check-circle-2" class="w-4 h-4"></i> Identificamos o
+                seu perfil!</span>
+            <span id="display-nome-badge">O BHC Hair é para você.</span>
         </div>
 
-        <h1 class="text-3xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-6 leading-[1.1] max-w-4xl fade-in-up"
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-5 md:mb-6 leading-[1.15] max-w-4xl fade-in-up"
             style="animation-delay: 0.5s; opacity: 0;">
             <span id="display-nome-titulo"
                 class="block text-3xl md:text-4xl text-brand-600 mb-4 font-bold hidden"></span>
             O fim da queda.<br>O início do seu <span class="text-brand-600">novo cabelo.</span>
         </h1>
 
-        <p class="text-lg md:text-xl text-gray-500 mb-10 max-w-2xl leading-relaxed fade-in-up"
+        <p class="text-base md:text-xl text-gray-600 mb-8 md:mb-10 max-w-xl mx-auto leading-relaxed fade-in-up"
             style="animation-delay: 0.2s; opacity: 0;">
             Você já perdeu muito cabelo — e muito dinheiro tentando resolver isso.<br>
             O BHC Hair foi criado para ser <strong>a última coisa que você vai precisar comprar.</strong>
@@ -100,12 +122,12 @@
             </div>
         </div>
         <br><br>
-        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-8 fade-in-up"
+        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-4 md:mb-8 fade-in-up"
             style="animation-delay: 0.3s; opacity: 0;">
             <a href="#ofertas"
-                class="bg-brand-600 hover:bg-brand-500 text-white font-semibold text-lg py-4 px-8 rounded-full shadow-lg shadow-brand-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                class="bg-brand-600 hover:bg-brand-500 text-white font-semibold text-base sm:text-lg py-3.5 px-6 md:py-4 md:px-8 rounded-full shadow-lg shadow-brand-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 whitespace-nowrap">
                 Quero Restaurar o Meu Cabelo
-                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5"></i>
             </a>
         </div>
 
@@ -124,25 +146,25 @@
         </div>
 
         <!-- Selos de Confiança -->
-        <div class="mt-4 pt-4 border-t border-gray-200 w-full max-w-3xl flex flex-wrap justify-center gap-8 opacity-60 grayscale fade-in-up"
+        <div class="mt-4 pt-4 border-t border-gray-200 w-full max-w-3xl flex flex-wrap justify-center gap-4 md:gap-8 opacity-60 grayscale fade-in-up"
             style="animation-delay: 0.5s; opacity: 0;">
-            <div class="flex items-center gap-2 font-bold text-gray-600">
-                <i data-lucide="shield-check" class="w-6 h-6"></i> Aprovado pela ANVISA
+            <div class="flex items-center gap-1.5 font-bold text-gray-600 text-[11px] md:text-base">
+                <i data-lucide="shield-check" class="w-4 h-4 md:w-6 md:h-6"></i> Aprovado pela ANVISA
             </div>
-            <div class="flex items-center gap-2 font-bold text-gray-600">
-                <i data-lucide="truck" class="w-6 h-6"></i> Envio Rápido
+            <div class="flex items-center gap-1.5 font-bold text-gray-600 text-[11px] md:text-base">
+                <i data-lucide="truck" class="w-4 h-4 md:w-6 md:h-6"></i> Envio Rápido
             </div>
-            <div class="flex items-center gap-2 font-bold text-gray-600">
-                <i data-lucide="lock" class="w-6 h-6"></i> Compra 100% Segura
+            <div class="flex items-center gap-1.5 font-bold text-gray-600 text-[11px] md:text-base">
+                <i data-lucide="lock" class="w-4 h-4 md:w-6 md:h-6"></i> Compra 100% Segura
             </div>
         </div>
     </section>
 
     <!-- Você Precisa do BHC Hair? -->
-    <section class="py-24 bg-brand-50 border-y border-brand-100">
+    <section class="py-12 md:py-24 bg-brand-50 border-y border-brand-100">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="flex flex-col md:flex-row items-center gap-16">
-                <div class="md:w-1/2">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                <div class="w-full md:w-1/2">
                     <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-6">O <span
                             class="text-brand-600">BHC Hair®</span> é para você se:</h2>
                     <ul class="space-y-4 mb-8">
@@ -182,9 +204,9 @@
                         Quero meu cabelo de volta →
                     </a>
                 </div>
-                <div class="md:w-1/2 relative">
+                <div class="w-full md:w-1/2 relative">
                     <div
-                        class="w-full h-[400px] md:h-[500px] rounded-3xl border-4 border-white shadow-xl overflow-hidden relative flex items-center justify-center text-center">
+                        class="w-full h-[260px] md:h-[500px] rounded-3xl border-4 border-white shadow-xl overflow-hidden relative flex items-center justify-center text-center">
                         <img src="assets/cabelo-liquido-2-1.gif" alt="Cabelo líquido"
                             class="absolute inset-0 w-full h-full object-cover" />
                         <div class="absolute inset-0 bg-black/30"></div>
@@ -198,11 +220,12 @@
     </section>
 
     <!-- O Poder do BHC Hair -->
-    <section class="py-24 bg-white">
+    <section class="py-12 md:py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-4">O Poder do <span
                     class="text-brand-600">BHC Hair®</span></h2>
-            <p class="text-gray-500 text-lg max-w-3xl mx-auto mb-16">O xampu trabalha por fora. O BHC Hair trabalha de
+            <p class="text-gray-500 text-base md:text-lg max-w-3xl mx-auto mb-8 md:mb-16">O xampu trabalha por fora. O
+                BHC Hair trabalha de
                 <strong>dentro</strong>, alimentando a raiz enquanto você vive a sua vida. É por isso que funciona
                 quando o resto não funciona.
             </p>
@@ -257,15 +280,16 @@
     </section>
 
     <!-- Ativos da Fórmula -->
-    <section class="py-20 bg-gray-900 text-white">
+    <section class="py-10 md:py-20 bg-gray-900 text-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Por que o BHC Hair funciona quando <span
+            <div class="text-center mb-8 md:mb-16">
+                <h2 class="text-2xl md:text-4xl font-bold tracking-tight mb-4">Por que o BHC Hair funciona quando <span
                         class="text-brand-500">o resto não funcionou?</span></h2>
-                <p class="text-gray-400 text-lg">Porque ele vai direto à raiz do problema — literalmente.</p>
+                <p class="text-gray-400 text-base md:text-lg">Porque ele vai direto à raiz do problema — literalmente.
+                </p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
 
                 <!-- 1 -->
                 <div
@@ -386,7 +410,7 @@
     </section>
 
     <!-- Linha do Tempo de Resultados -->
-    <section class="py-24 bg-white">
+    <section class="py-12 md:py-24 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-4">Quando começa a ver
@@ -463,7 +487,7 @@
     </section>
 
     <!-- Depoimentos -->
-    <section class="py-24 bg-gray-50 border-t border-gray-100">
+    <section class="py-12 md:py-24 bg-gray-50 border-t border-gray-100">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-4">Elas duvidaram. Tentaram. E
@@ -566,55 +590,63 @@
             <div class="relative overflow-hidden">
                 <div id="whatsapp-track" class="flex gap-4"
                     style="width: max-content; animation: scrollLeft 35s linear infinite;">
-                    <img src="Depoimentos/01.jpg" alt="Depoimento BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/34.jpg" alt="Depoimento WhatsApp BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/3.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/2.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/6.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/9.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/10.jpg" alt="Resultado BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/5.jpg" alt="Resultado BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/1.jpg" alt="Resultado BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/8.jpg" alt="Resultado BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/29.jpg" alt="Resultado BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/11.jpg" alt="Resultado BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/01.jpg" alt="Depoimento BHC Hair" onerror="this.src='Depoimentos/01.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/34.jpg" alt="Depoimento WhatsApp BHC Hair" onerror="this.src='Depoimentos/34.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/3.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
+                        onerror="this.src='Depoimentos/3.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/2.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
+                        onerror="this.src='Depoimentos/2.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/6.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
+                        onerror="this.src='Depoimentos/6.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/9.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
+                        onerror="this.src='Depoimentos/9.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/10.jpg" alt="Resultado BHC Hair" onerror="this.src='Depoimentos/10.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/5.jpg" alt="Resultado BHC Hair" onerror="this.src='Depoimentos/5.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/1.jpg" alt="Resultado BHC Hair" onerror="this.src='Depoimentos/1.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/8.jpg" alt="Resultado BHC Hair" onerror="this.src='Depoimentos/8.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/29.jpg" alt="Resultado BHC Hair" onerror="this.src='Depoimentos/29.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/11.jpg" alt="Resultado BHC Hair" onerror="this.src='Depoimentos/11.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
                     <!-- duplicata para loop contínuo -->
-                    <img src="Depoimentos/01.jpg" alt="Depoimento BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/34.jpg" alt="Depoimento WhatsApp BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/3.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/2.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/6.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/9.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/10.jpg" alt="Resultado BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/5.jpg" alt="Resultado BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/1.jpg" alt="Resultado BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/8.jpg" alt="Resultado BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/29.jpg" alt="Resultado BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
-                    <img src="Depoimentos/11.jpg" alt="Resultado BHC Hair"
-                        class="h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/01.jpg" alt="Depoimento BHC Hair" onerror="this.src='Depoimentos/01.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/34.jpg" alt="Depoimento WhatsApp BHC Hair" onerror="this.src='Depoimentos/34.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/3.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
+                        onerror="this.src='Depoimentos/3.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/2.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
+                        onerror="this.src='Depoimentos/2.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/6.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
+                        onerror="this.src='Depoimentos/6.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/9.jpg" alt="Resultado BHC Hair Dia 01 ao Dia 60"
+                        onerror="this.src='Depoimentos/9.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/10.jpg" alt="Resultado BHC Hair" onerror="this.src='Depoimentos/10.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/5.jpg" alt="Resultado BHC Hair" onerror="this.src='Depoimentos/5.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/1.jpg" alt="Resultado BHC Hair" onerror="this.src='Depoimentos/1.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/8.jpg" alt="Resultado BHC Hair" onerror="this.src='Depoimentos/8.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/29.jpg" alt="Resultado BHC Hair" onerror="this.src='Depoimentos/29.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
+                    <img src="assets/11.jpg" alt="Resultado BHC Hair" onerror="this.src='Depoimentos/11.jpg'"
+                        class="h-64 sm:h-80 w-auto rounded-2xl shadow-md border border-gray-200 object-cover flex-shrink-0">
                 </div>
                 <!-- Fade nas bordas -->
                 <div
@@ -629,9 +661,9 @@
 
         <div class="mt-12 text-center relative z-10">
             <a href="#ofertas"
-                class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-10 text-lg rounded-full shadow-lg shadow-green-500/25 transition-transform transform hover:-translate-y-1">
+                class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3.5 px-6 md:py-4 md:px-10 text-base md:text-lg rounded-full shadow-lg shadow-green-500/25 transition-transform transform hover:-translate-y-1 whitespace-nowrap">
                 Quero ser o próximo resultado
-                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5"></i>
             </a>
         </div>
 
@@ -641,9 +673,9 @@
 
 
     <!-- Acredite com o BHC Hair -->
-    <section class="py-24 bg-white border-t border-gray-100">
+    <section class="py-12 md:py-24 bg-white border-t border-gray-100">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+            <div class="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-16">
 
                 <!-- Imagem -->
                 <div class="md:w-2/5 w-full flex-shrink-0">
@@ -652,7 +684,7 @@
                 </div>
 
                 <!-- Texto -->
-                <div class="md:w-3/5">
+                <div class="w-full md:w-3/5">
                     <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-6 leading-tight">
                         Pare de gastar com o que não funciona.<br><span class="text-brand-600">Invista uma vez no que
                             vai durar.</span>
@@ -679,7 +711,7 @@
 
     <!-- Ofertas / Pricing (Novo Design focado em Conversão) -->
 
-    <section id="ofertas" class="py-20 bg-brand-600 scroll-mt-16">
+    <section id="ofertas" class="py-10 md:py-20 pb-28 md:pb-20 bg-brand-600 scroll-mt-16">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-10">
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-2">Invista no seu cabelo
@@ -693,12 +725,12 @@
                 <!-- Pacote 1 Frasco -->
                 <div
                     class="bg-white rounded-[32px] p-6 md:p-8 flex flex-col items-center text-center shadow-lg relative h-full justify-between">
-                    <div>
-                        <h3 class="mb-6 leading-tight">
-                            <span class="text-black font-extrabold text-3xl md:text-4xl block">Compre 1</span>
-                            <span class="text-brand-500 font-extrabold text-3xl md:text-4xl block">Frasco</span>
+                    <div class="w-full">
+                        <h3 class="mb-4 md:mb-6 leading-tight">
+                            <span class="text-black font-extrabold text-2xl md:text-4xl block">Compre 1</span>
+                            <span class="text-brand-500 font-extrabold text-2xl md:text-4xl block">Frasco</span>
                         </h3>
-                        <div class="h-40 flex items-center justify-center mb-6">
+                        <div class="h-32 md:h-40 flex items-center justify-center mb-6">
                             <img src="assets/1-FRASCO-2-1-1024x819.png" alt="1 Frasco BHC Hair"
                                 class="h-full w-auto object-contain drop-shadow-md">
                         </div>
@@ -706,7 +738,7 @@
 
                     <div class="w-full">
                         <p class="text-gray-700 text-sm font-medium mb-1">por apenas</p>
-                        <p class="text-black font-extrabold text-4xl md:text-[42px] tracking-tight leading-none mb-2">
+                        <p class="text-black font-extrabold text-3xl md:text-[42px] tracking-tight leading-none mb-2">
                             R$197,00</p>
                         <p class="text-gray-600 text-xs font-bold mb-5">ou até 12x no cartão</p>
 
@@ -755,20 +787,21 @@
                         <i data-lucide="check" class="w-3.5 h-3.5"></i> MELHOR ESCOLHA
                     </div>
 
-                    <div class="mt-4">
-                        <h3 class="mb-6 leading-tight">
-                            <span class="text-black font-extrabold text-3xl md:text-4xl block">Compre 3</span>
-                            <span class="text-brand-500 font-extrabold text-3xl md:text-4xl block">& Leve 5</span>
+                    <div class="w-full mt-4">
+                        <h3 class="mb-4 md:mb-6 leading-tight">
+                            <span class="text-black font-extrabold text-2xl md:text-4xl block">Compre 3</span>
+                            <span class="text-brand-500 font-extrabold text-2xl md:text-4xl block">& Leve 5</span>
                         </h3>
-                        <div class="h-40 flex items-center justify-center mb-6">
+                        <div class="h-32 md:h-40 flex items-center justify-center mb-6 relative">
+                            <div class="absolute inset-0 bg-brand-500/10 rounded-full blur-xl animate-pulse"></div>
                             <img src="assets/5-FRASCOS-1-1-1024x856.png" alt="5 Frascos BHC Hair"
-                                class="h-full w-auto object-contain drop-shadow-md">
+                                class="h-full w-auto object-contain drop-shadow-xl relative z-10">
                         </div>
                     </div>
 
                     <div class="w-full">
                         <p class="text-gray-700 text-sm font-medium mb-1">por apenas</p>
-                        <p class="text-black font-extrabold text-4xl md:text-[42px] tracking-tight leading-none mb-2">
+                        <p class="text-black font-extrabold text-3xl md:text-[42px] tracking-tight leading-none mb-2">
                             R$397,00</p>
                         <p class="text-gray-600 text-xs font-bold mb-5">ou até 12x no cartão</p>
 
@@ -812,12 +845,12 @@
                 <!-- Pacote 2 Frascos & Leve 3 -->
                 <div
                     class="bg-white rounded-[32px] p-6 md:p-8 flex flex-col items-center text-center shadow-lg relative h-full justify-between">
-                    <div>
-                        <h3 class="mb-6 leading-tight">
-                            <span class="text-black font-extrabold text-3xl md:text-4xl block">Compre 2</span>
-                            <span class="text-brand-500 font-extrabold text-3xl md:text-4xl block">& Leve 3</span>
+                    <div class="w-full">
+                        <h3 class="mb-4 md:mb-6 leading-tight">
+                            <span class="text-black font-extrabold text-2xl md:text-4xl block">Compre 2</span>
+                            <span class="text-brand-500 font-extrabold text-2xl md:text-4xl block">& Leve 3</span>
                         </h3>
-                        <div class="h-40 flex items-center justify-center mb-6">
+                        <div class="h-32 md:h-40 flex items-center justify-center mb-6">
                             <img src="assets/3-FRASCOS-1-1-1024x819.png" alt="3 Frascos BHC Hair"
                                 class="h-full w-auto object-contain drop-shadow-md">
                         </div>
@@ -825,7 +858,7 @@
 
                     <div class="w-full">
                         <p class="text-gray-700 text-sm font-medium mb-1">por apenas</p>
-                        <p class="text-black font-extrabold text-4xl md:text-[42px] tracking-tight leading-none mb-2">
+                        <p class="text-black font-extrabold text-3xl md:text-[42px] tracking-tight leading-none mb-2">
                             R$297,00</p>
                         <p class="text-gray-600 text-xs font-bold mb-5">ou até 12x no cartão</p>
 
@@ -871,7 +904,7 @@
     </section>
 
     <!-- Garantia -->
-    <section class="py-20 bg-white border-t border-gray-100">
+    <section class="py-10 md:py-20 bg-white border-t border-gray-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <div
                 class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-6 text-gray-900 border border-gray-100">
@@ -888,57 +921,74 @@
     </section>
 
     <!-- FAQ Completo -->
-    <section class="py-20 bg-gray-50 border-t border-gray-200">
+    <section class="py-10 md:py-20 bg-gray-50 border-t border-gray-200">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
             <h2 class="text-3xl font-bold tracking-tight text-gray-900 mb-10 text-center">Dúvidas Frequentes</h2>
 
             <div class="space-y-4">
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                    <h3 class="font-bold text-gray-900 mb-2">Como devo usar o BHC Hair Caps?</h3>
-                    <p class="text-gray-600">Simples: 1 cápsula por dia, de manhã, junto com a primeira refeição. Assim
-                        a absorção é melhor e você já cria o hábito no começo do dia.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                    <h3 class="font-bold text-gray-900 mb-2">Engorda ou causa espinhas?</h3>
-                    <p class="text-gray-600">Não. A fórmula é 100% focada em vitaminas e minerais capilares, sem caloria
-                        e sem alterar os níveis hormonais. Muitas clientes relatam até melhora na pele!</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                    <h3 class="font-bold text-gray-900 mb-2">Em quanto tempo vejo resultados?</h3>
-                    <p class="text-gray-600">A redução da queda já pode aparecer nas primeiras semanas. O crescimento
-                        acelerado e o preenchimento de falhas ficam mais evidentes a partir do segundo mês. O ideal é
-                        usar por pelo menos 3 meses para sentir a transformação completa.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                    <h3 class="font-bold text-gray-900 mb-2">Posso tomar junto com anticoncepcional?</h3>
-                    <p class="text-gray-600">Sim! O BHC Hair é um suplemento alimentar natural e não interfere com
-                        anticoncepcionais. Mesmo assim, se tiver alguma dúvida específica, consulte o seu médico ou
-                        ginecologista.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                    <h3 class="font-bold text-gray-900 mb-2">Funciona para queda pós-parto?</h3>
-                    <p class="text-gray-600">Sim! A queda pós-parto é uma das principais causas que levam mulheres ao
-                        BHC Hair — e os resultados são incríveis. Gestantes e lactantes devem consultar o médico antes
-                        de iniciar qualquer suplementação.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                    <h3 class="font-bold text-gray-900 mb-2">Funciona em cabelo com progressiva ou química?</h3>
-                    <p class="text-gray-600">Sim! O BHC Hair age na raíz e no folículo, não na fibra capilar externa.
-                        Isso significa que ele funciona independentemente de progressiva, coloração, descolorção ou
-                        qualquer processo químico no fio.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                    <h3 class="font-bold text-gray-900 mb-2">Preciso usar para sempre ou tem hora de parar?</h3>
-                    <p class="text-gray-600">Não é viciante e você pode parar quando quiser. Porém, assim como qualquer
-                        suplemento, os melhores resultados são mantidos com o uso contínuo. A maioria das nossas
-                        clientes escolhe continuar porque amam os resultados.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                    <h3 class="font-bold text-gray-900 mb-2">Qual o prazo de entrega? É seguro comprar no site?</h3>
-                    <p class="text-gray-600">Totalmente seguro! O site tem criptografia SSL e a compra é processada por
-                        gateways certificados. O prazo de entrega é de 3 a 10 dias úteis, e você recebe o código de
-                        rastreio por e-mail e WhatsApp assim que o pedido sair.</p>
-                </div>
+                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+                        Como devo usar o BHC Hair Caps?
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                    </summary>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Simples: 1 cápsula por dia, de manhã, junto com a primeira refeição. Assim a absorção é melhor e você já cria o hábito no começo do dia.</p>
+                </details>
+                
+                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+                        Engorda ou causa espinhas?
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                    </summary>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Não. A fórmula é 100% focada em vitaminas e minerais capilares, sem caloria e sem alterar os níveis hormonais. Muitas clientes relatam até melhora na pele!</p>
+                </details>
+                
+                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+                        Em quanto tempo vejo resultados?
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                    </summary>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">A redução da queda já pode aparecer nas primeiras semanas. O crescimento acelerado e o preenchimento de falhas ficam mais evidentes a partir do segundo mês. O ideal é usar por pelo menos 3 meses para sentir a transformação completa.</p>
+                </details>
+
+                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+                        Posso tomar junto com anticoncepcional?
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                    </summary>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Sim! O BHC Hair é um suplemento alimentar natural e não interfere com anticoncepcionais. Mesmo assim, se tiver alguma dúvida específica, consulte o seu médico ou ginecologista.</p>
+                </details>
+
+                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+                        Funciona para queda pós-parto?
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                    </summary>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Sim! A queda pós-parto é uma das principais causas que levam mulheres ao BHC Hair — e os resultados são incríveis. Gestantes e lactantes devem consultar o médico antes de iniciar qualquer suplementação.</p>
+                </details>
+
+                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+                        Funciona em cabelo com progressiva ou química?
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                    </summary>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Sim! O BHC Hair age na raíz e no folículo, não na fibra capilar externa. Isso significa que ele funciona independentemente de progressiva, coloração, descolorção ou qualquer processo químico no fio.</p>
+                </details>
+
+                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+                        Preciso usar para sempre ou tem hora de parar?
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                    </summary>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Não é viciante e você pode parar quando quiser. Porém, assim como qualquer suplemento, os melhores resultados são mantidos com o uso contínuo. A maioria das nossas clientes escolhe continuar porque amam os resultados.</p>
+                </details>
+
+                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+                        Qual o prazo de entrega? É seguro comprar no site?
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                    </summary>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Totalmente seguro! O site tem criptografia SSL e a compra é processada por gateways certificados. O prazo de entrega é de 3 a 10 dias úteis, e você recebe o código de rastreio por e-mail e WhatsApp assim que o pedido sair.</p>
+                </details>
             </div>
         </div>
     </section>
@@ -1011,13 +1061,13 @@
                 </div>
 
                 <!-- Formas de Pagamento -->
-                <div>
+                <div class="text-center sm:text-left">
                     <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-5">Formas de Pagamento</h4>
-                    <div class="py-2 flex flex-col gap-5">
+                    <div class="py-2 flex flex-col gap-5 items-center sm:items-start">
                         <img src="assets/pagamento-new.png" alt="Formas de Pagamento"
-                            class="w-full max-w-[220px] h-auto object-contain">
+                            class="w-full max-w-[220px] h-auto object-contain mx-auto sm:mx-0">
                         <img src="assets/correios.webp" alt="Correios"
-                            class="w-full max-w-[220px] h-auto object-contain">
+                            class="w-full max-w-[220px] h-auto object-contain mx-auto sm:mx-0">
                     </div>
                 </div>
 
@@ -1051,8 +1101,9 @@
 
                 <!-- Links Importantes -->
                 <div>
-                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-5">Links Importantes</h4>
-                    <ul class="flex flex-col gap-2.5">
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-5 text-center sm:text-left">
+                        Links Importantes</h4>
+                    <ul class="flex flex-col gap-2.5 items-center sm:items-start">
                         <li><a href="aviso-legal.html"
                                 class="text-sm text-white/80 hover:text-white transition-colors flex items-center gap-1.5"><i
                                     data-lucide="chevron-right" class="w-3 h-3"></i>Aviso Legal</a></li>
@@ -1069,9 +1120,9 @@
                                 class="text-sm text-white/80 hover:text-white transition-colors flex items-center gap-1.5"><i
                                     data-lucide="chevron-right" class="w-3 h-3"></i>Fale Conosco</a></li>
                     </ul>
-                    <div class="py-2">
+                    <div class="py-2 text-center sm:text-left">
                         <img src="assets/d9dfef_10aa1e7ffd6944ef9e0426ab8bce0d7d~mv2.avif" alt="Reclame Aqui"
-                            class="w-full max-w-[220px] h-auto object-contain mb-3">
+                            class="w-full max-w-[220px] h-auto object-contain mb-3 mx-auto sm:mx-0">
                     </div>
                 </div>
 
