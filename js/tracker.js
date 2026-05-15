@@ -3,7 +3,7 @@
 
     // ─── Contatos oficiais — altere aqui para atualizar todo o projeto ────────
     const WHATSAPP_NUMBER = '5542988293278';
-    const CONTACT_EMAIL   = 'falarcom@beladefases.com.br';
+    const CONTACT_EMAIL = 'falarcom@beladefases.com.br';
 
     function getLeadId() {
         let leadId = localStorage.getItem('bdf_lead_id');
