@@ -167,7 +167,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ─── Rastreamento de clique nos botões de Checkout ───────────────────────
     // Exposta globalmente para ser chamada por onclick nos botões HTML
+
+    /**
+     * parsePreco — Converte string de preço (ex: "R$197,00" ou "197,00") para número (197.00).
+     * Remove símbolo de moeda, espaços e converte vírgula decimal para ponto.
+     *
+     * @param {string} precoStr - Preço em formato textual (ex: "R$197,00")
+     * @returns {number} Valor numérico (ex: 197.00), ou 0 se inválido
+     */
+    function parsePreco(precoStr) {
+        if (!precoStr) return 0;
+        // Remove R$, espaços e pontos de milhar; troca vírgula decimal por ponto
+        var limpo = String(precoStr)
+            .replace(/R\$\s*/i, '')
+            .replace(/\./g, '')    // remove separadores de milhar
+            .replace(',', '.');    // vírgula decimal → ponto
+        var valor = parseFloat(limpo);
+        return isNaN(valor) ? 0 : valor;
+    }
+
     window.trackCheckout = function (kit, preco, checkout_url) {
+
+        // ── 1. BDFTracker (rastreamento interno / CRM) ──────────────────────
         if (window.BDFTracker) {
             window.BDFTracker.trackEvent('checkout_clicked', {
                 kit,
@@ -178,9 +199,39 @@ document.addEventListener('DOMContentLoaded', function () {
                 product_interest: 'BHC Hair'
             });
         }
-        // Pequeno delay para garantir que o fetch (keepalive) seja disparado
+
+        // ── 2. Google Analytics 4 — begin_checkout ──────────────────────────
+        // Disparado quando o usuário clica em um botão de compra neste site.
+        // Representa a INTENÇÃO de comprar (início do checkout).
+        //
+        // IMPORTANTE: NÃO disparamos 'purchase' aqui porque a transação
+        // ocorre fora do site, na SonharPay. O evento 'purchase' deve ser
+        // configurado diretamente na SonharPay (página de obrigado / thank you
+        // page) ou via webhook/postback, caso a plataforma permita.
+        if (typeof gtag === 'function') {
+            var valorNumerico = parsePreco(preco);
+            gtag('event', 'begin_checkout', {
+                currency: 'BRL',
+                value: valorNumerico,
+                items: [
+                    {
+                        item_id:       'bhc-hair-' + String(kit).toLowerCase().replace(/\s+/g, '-'),
+                        item_name:     'BHC Hair Caps — ' + kit,
+                        item_brand:    'BHC Hair',
+                        item_category: 'Suplemento Capilar',
+                        price:         valorNumerico,
+                        quantity:      1
+                    }
+                ]
+            });
+        }
+
+        // ── 3. Redirect para a SonharPay ────────────────────────────────────
+        // Delay aumentado para 400 ms: garante tempo suficiente para o
+        // gtag() e o BDFTracker (fetch keepalive) serem enviados antes
+        // do navegador redirecionar.
         setTimeout(function () {
             window.location.href = checkout_url;
-        }, 120);
+        }, 400);
     };
 });

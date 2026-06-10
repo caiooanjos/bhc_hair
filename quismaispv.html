@@ -2,6 +2,16 @@
 <html lang="pt-BR">
 
 <head>
+    <!-- Google tag (gtag.js) — Rastreamento de base GA4
+         Este script registra pageviews e habilita o envio de eventos
+         para o Google Analytics 4. Não contém chaves secretas. -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5CY9HSD34M"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5CY9HSD34M');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Ponto 6: Proteção contra Clickjacking -->
@@ -68,12 +78,14 @@
     </div>
 
     <!-- Toast de Prova Social (Aparece no canto inferior esquerdo/acima da barra mobile) -->
-    <div id="social-proof-toast" class="fixed bottom-24 md:bottom-6 left-4 right-4 md:right-auto md:left-6 z-50 bg-white border border-gray-100 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-3 flex items-center gap-3 transform translate-y-10 opacity-0 pointer-events-none transition-all duration-500 max-w-sm">
+    <div id="social-proof-toast"
+        class="fixed bottom-24 md:bottom-6 left-4 right-4 md:right-auto md:left-6 z-50 bg-white border border-gray-100 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-3 flex items-center gap-3 transform translate-y-10 opacity-0 pointer-events-none transition-all duration-500 max-w-sm">
         <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
             <i data-lucide="shopping-bag" class="w-5 h-5 text-green-600"></i>
         </div>
         <div>
-            <p class="text-sm text-gray-800 font-medium leading-tight"><span id="sp-name" class="font-bold">Maria (SP)</span> acabou de comprar</p>
+            <p class="text-sm text-gray-800 font-medium leading-tight"><span id="sp-name" class="font-bold">Maria
+                    (SP)</span> acabou de comprar</p>
             <p class="text-xs text-brand-600 font-bold" id="sp-product">Kit 3 Frascos</p>
             <p class="text-[10px] text-gray-400 mt-0.5" id="sp-time">Há 2 minutos</p>
         </div>
@@ -926,68 +938,110 @@
             <h2 class="text-3xl font-bold tracking-tight text-gray-900 mb-10 text-center">Dúvidas Frequentes</h2>
 
             <div class="space-y-4">
-                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
-                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+                <details
+                    class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary
+                        class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
                         Como devo usar o BHC Hair Caps?
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
                     </summary>
-                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Simples: 1 cápsula por dia, de manhã, junto com a primeira refeição. Assim a absorção é melhor e você já cria o hábito no começo do dia.</p>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Simples: 1 cápsula por dia, de manhã,
+                        junto com a primeira refeição. Assim a absorção é melhor e você já cria o hábito no começo do
+                        dia.</p>
                 </details>
-                
-                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
-                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+
+                <details
+                    class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary
+                        class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
                         Engorda ou causa espinhas?
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
                     </summary>
-                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Não. A fórmula é 100% focada em vitaminas e minerais capilares, sem caloria e sem alterar os níveis hormonais. Muitas clientes relatam até melhora na pele!</p>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Não. A fórmula é 100% focada em
+                        vitaminas e minerais capilares, sem caloria e sem alterar os níveis hormonais. Muitas clientes
+                        relatam até melhora na pele!</p>
                 </details>
-                
-                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
-                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+
+                <details
+                    class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary
+                        class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
                         Em quanto tempo vejo resultados?
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
                     </summary>
-                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">A redução da queda já pode aparecer nas primeiras semanas. O crescimento acelerado e o preenchimento de falhas ficam mais evidentes a partir do segundo mês. O ideal é usar por pelo menos 3 meses para sentir a transformação completa.</p>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">A redução da queda já pode aparecer
+                        nas primeiras semanas. O crescimento acelerado e o preenchimento de falhas ficam mais evidentes
+                        a partir do segundo mês. O ideal é usar por pelo menos 3 meses para sentir a transformação
+                        completa.</p>
                 </details>
 
-                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
-                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+                <details
+                    class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary
+                        class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
                         Posso tomar junto com anticoncepcional?
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
                     </summary>
-                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Sim! O BHC Hair é um suplemento alimentar natural e não interfere com anticoncepcionais. Mesmo assim, se tiver alguma dúvida específica, consulte o seu médico ou ginecologista.</p>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Sim! O BHC Hair é um suplemento
+                        alimentar natural e não interfere com anticoncepcionais. Mesmo assim, se tiver alguma dúvida
+                        específica, consulte o seu médico ou ginecologista.</p>
                 </details>
 
-                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
-                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+                <details
+                    class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary
+                        class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
                         Funciona para queda pós-parto?
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
                     </summary>
-                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Sim! A queda pós-parto é uma das principais causas que levam mulheres ao BHC Hair — e os resultados são incríveis. Gestantes e lactantes devem consultar o médico antes de iniciar qualquer suplementação.</p>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Sim! A queda pós-parto é uma das
+                        principais causas que levam mulheres ao BHC Hair — e os resultados são incríveis. Gestantes e
+                        lactantes devem consultar o médico antes de iniciar qualquer suplementação.</p>
                 </details>
 
-                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
-                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+                <details
+                    class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary
+                        class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
                         Funciona em cabelo com progressiva ou química?
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
                     </summary>
-                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Sim! O BHC Hair age na raíz e no folículo, não na fibra capilar externa. Isso significa que ele funciona independentemente de progressiva, coloração, descolorção ou qualquer processo químico no fio.</p>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Sim! O BHC Hair age na raíz e no
+                        folículo, não na fibra capilar externa. Isso significa que ele funciona independentemente de
+                        progressiva, coloração, descolorção ou qualquer processo químico no fio.</p>
                 </details>
 
-                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
-                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+                <details
+                    class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary
+                        class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
                         Preciso usar para sempre ou tem hora de parar?
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
                     </summary>
-                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Não é viciante e você pode parar quando quiser. Porém, assim como qualquer suplemento, os melhores resultados são mantidos com o uso contínuo. A maioria das nossas clientes escolhe continuar porque amam os resultados.</p>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Não é viciante e você pode parar
+                        quando quiser. Porém, assim como qualquer suplemento, os melhores resultados são mantidos com o
+                        uso contínuo. A maioria das nossas clientes escolhe continuar porque amam os resultados.</p>
                 </details>
 
-                <details class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
-                    <summary class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
+                <details
+                    class="group bg-white p-6 rounded-2xl border border-gray-200 shadow-sm cursor-pointer transition-all duration-300">
+                    <summary
+                        class="font-bold text-gray-900 flex items-center justify-between outline-none list-none [&::-webkit-details-marker]:hidden">
                         Qual o prazo de entrega? É seguro comprar no site?
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 text-brand-600 transition-transform duration-300 group-open:-rotate-180"></i>
                     </summary>
-                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Totalmente seguro! O site tem criptografia SSL e a compra é processada por gateways certificados. O prazo de entrega é de 3 a 10 dias úteis, e você recebe o código de rastreio por e-mail e WhatsApp assim que o pedido sair.</p>
+                    <p class="text-gray-600 mt-4 leading-relaxed animate-fade-in">Totalmente seguro! O site tem
+                        criptografia SSL e a compra é processada por gateways certificados. O prazo de entrega é de 3 a
+                        10 dias úteis, e você recebe o código de rastreio por e-mail e WhatsApp assim que o pedido sair.
+                    </p>
                 </details>
             </div>
         </div>
