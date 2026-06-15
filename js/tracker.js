@@ -1,6 +1,7 @@
 (function () {
     const API_ENDPOINT = 'https://bhc-lead-api.caiogpuava.workers.dev';
     const META_PIXEL_ID = '990166170412622';
+    const STORED_LEAD_KEY = 'bdf_lead_data';
 
     // ─── Contatos oficiais — altere aqui para atualizar todo o projeto ────────
     const WHATSAPP_NUMBER = '5542988293278';
@@ -15,6 +16,41 @@
         }
 
         return leadId;
+    }
+
+    function getCookie(name) {
+        const cookie = document.cookie
+            .split('; ')
+            .find((row) => row.startsWith(`${name}=`));
+
+        return cookie ? decodeURIComponent(cookie.split('=').slice(1).join('=')) : null;
+    }
+
+    function getMetaCookies() {
+        return {
+            fbp: getCookie('_fbp'),
+            fbc: getCookie('_fbc'),
+        };
+    }
+
+    function getStoredLeadData() {
+        try {
+            return JSON.parse(localStorage.getItem(STORED_LEAD_KEY) || '{}');
+        } catch (error) {
+            return {};
+        }
+    }
+
+    function saveLeadData(data = {}) {
+        const leadData = {
+            name: data.name || data.nome || '',
+            email: data.email || '',
+            phone: data.phone || data.telefone || '',
+        };
+
+        if (leadData.name || leadData.email || leadData.phone) {
+            localStorage.setItem(STORED_LEAD_KEY, JSON.stringify(leadData));
+        }
     }
 
     function getUtmParams() {
@@ -89,7 +125,7 @@
 
         if (event === 'quiz_completed') {
             trackMetaEvent(
-                'Lead',
+                'CompleteRegistration',
                 {
                     content_name: 'Análise de Perfil Capilar',
                     content_category: contentCategory,
@@ -120,6 +156,10 @@
     }
 
     async function trackEvent(event, data = {}) {
+        if (event === 'quiz_completed') {
+            saveLeadData(data);
+        }
+
         const eventId = data.event_id || createEventId(event);
         const payload = {
             event,
@@ -128,11 +168,14 @@
             page_url: window.location.href,
             referrer: document.referrer || null,
             timestamp: new Date().toISOString(),
+            user_agent: navigator.userAgent,
+            ...getMetaCookies(),
             ...getUtmParams(),
+            ...getStoredLeadData(),
             ...data,
         };
 
-        trackMetaFromInternalEvent(event, data, eventId);
+        trackMetaFromInternalEvent(event, payload, eventId);
 
         try {
             await fetch(API_ENDPOINT, {
