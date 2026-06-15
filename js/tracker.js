@@ -1,5 +1,6 @@
 (function () {
     const API_ENDPOINT = 'https://bhc-lead-api.caiogpuava.workers.dev';
+    const META_PIXEL_ID = '990166170412622';
 
     // ─── Contatos oficiais — altere aqui para atualizar todo o projeto ────────
     const WHATSAPP_NUMBER = '5542988293278';
@@ -28,9 +29,101 @@
         };
     }
 
+    function createEventId(event) {
+        const random = Math.random().toString(36).slice(2, 10);
+        return `bdf_${event}_${getLeadId()}_${Date.now()}_${random}`;
+    }
+
+    function parseCurrency(value) {
+        if (!value) return 0;
+
+        const cleanedValue = String(value)
+            .replace(/R\$\s*/i, '')
+            .replace(/\./g, '')
+            .replace(',', '.')
+            .trim();
+
+        const parsedValue = parseFloat(cleanedValue);
+        return Number.isFinite(parsedValue) ? parsedValue : 0;
+    }
+
+    function initMetaPixel() {
+        if (!META_PIXEL_ID) return;
+
+        if (!window.fbq) {
+            !(function (f, b, e, v, n, t, s) {
+                if (f.fbq) return;
+                n = f.fbq = function () {
+                    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+                };
+                if (!f._fbq) f._fbq = n;
+                n.push = n;
+                n.loaded = true;
+                n.version = '2.0';
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = true;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s);
+            })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        }
+
+        window.fbq('init', META_PIXEL_ID);
+        window.fbq('track', 'PageView', {}, { eventID: createEventId('page_view') });
+    }
+
+    function trackMetaEvent(eventName, params = {}, eventId) {
+        if (typeof window.fbq !== 'function') return;
+
+        window.fbq('track', eventName, params, {
+            eventID: eventId || createEventId(eventName),
+        });
+    }
+
+    function trackMetaFromInternalEvent(event, data, eventId) {
+        // Importante: não enviamos respostas detalhadas do quiz para a Meta.
+        // Dados como dor_principal, respostas e histórico ficam apenas no CRM/n8n.
+        const productName = 'BHC Hair';
+        const contentCategory = 'Análise Capilar';
+
+        if (event === 'quiz_completed') {
+            trackMetaEvent(
+                'Lead',
+                {
+                    content_name: 'Análise de Perfil Capilar',
+                    content_category: contentCategory,
+                    product_interest: productName,
+                    status: data.qualified ? 'qualified' : 'not_qualified',
+                },
+                eventId
+            );
+        }
+
+        if (event === 'checkout_clicked') {
+            const numericValue = parseCurrency(data.preco);
+            const kitName = data.kit || 'BHC Hair';
+
+            trackMetaEvent(
+                'InitiateCheckout',
+                {
+                    content_name: `BHC Hair Caps — ${kitName}`,
+                    content_category: 'Suplemento Capilar',
+                    content_type: 'product',
+                    currency: 'BRL',
+                    value: numericValue,
+                    num_items: 1,
+                },
+                eventId
+            );
+        }
+    }
+
     async function trackEvent(event, data = {}) {
+        const eventId = data.event_id || createEventId(event);
         const payload = {
             event,
+            event_id: eventId,
             lead_id: getLeadId(),
             page_url: window.location.href,
             referrer: document.referrer || null,
@@ -38,6 +131,8 @@
             ...getUtmParams(),
             ...data,
         };
+
+        trackMetaFromInternalEvent(event, data, eventId);
 
         try {
             await fetch(API_ENDPOINT, {
@@ -53,8 +148,11 @@
         }
     }
 
+    initMetaPixel();
+
     window.BDFTracker = {
         trackEvent,
+        trackMetaEvent,
         getLeadId,
         WHATSAPP_NUMBER,
         CONTACT_EMAIL,
