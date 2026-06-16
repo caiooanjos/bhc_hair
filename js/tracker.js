@@ -125,7 +125,7 @@
 
         if (event === 'quiz_completed') {
             trackMetaEvent(
-                'CompleteRegistration',
+                'Lead',
                 {
                     content_name: 'Análise de Perfil Capilar',
                     content_category: contentCategory,
